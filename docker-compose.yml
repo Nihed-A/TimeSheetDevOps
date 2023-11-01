@@ -4,7 +4,6 @@ services:
   mysqldb:
     image: mysql:5.7
     restart: unless-stopped
-    env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD= ""
       - MYSQL_DATABASE=timesheet_db
@@ -16,7 +15,8 @@ services:
     depends_on:
       - mysqldb
     build:
-      context: ./TimeSheetDevOps
+      context: ./TimeSheetDevOps/TimeSheetDevOps
+      dockerfile: Dockerfile
     ports:
       - "8082:8082"
     environment:
